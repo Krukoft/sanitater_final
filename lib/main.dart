@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sanitater/src/ui/screens/home_page.dart';
+import 'package:sanitater/src/ui/screens/onboarding_page.dart';
 
 
 // import 'package:mvc_pattern/mvc_pattern.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: "Sanitater",
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: Onboarding(),
     );
   }
 }
