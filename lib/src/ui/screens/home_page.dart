@@ -40,9 +40,7 @@ class _HomePageState extends StateMVC<HomePage> {
             onPressed: () async{
               final prefs = await SharedPreferences.getInstance();
               prefs.setBool('showHome', false);
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => OnboardingPage())
-              );
+              _con.onBoardingSkip(context);
             },
           )
         ],
@@ -68,7 +66,7 @@ class _HomePageState extends StateMVC<HomePage> {
                             width: 200,),
                         ),
                       ),
-                      Text("Sanitater", style: TextStyle(fontSize: 35,color: Colors.white,), textAlign: TextAlign.center,),
+                      const Text("Sanitater", style: TextStyle(fontSize: 35,color: Colors.white,), textAlign: TextAlign.center,),
                     ],
                   )
               ),
@@ -80,8 +78,7 @@ class _HomePageState extends StateMVC<HomePage> {
                   title: Text("Dias Laborales", style: TextStyle(fontSize: 20, color: Colors.white),),
                   trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.teal.shade900,size: 25,),
                   onTap: (){
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => LaboralDaysPage()));
+                    _con.goLaboralDayPage(context);
                   },
                 ),
               ),
@@ -98,8 +95,7 @@ class _HomePageState extends StateMVC<HomePage> {
                   title: const Text("Pacientes", style: TextStyle(fontSize: 20, color: Colors.white),),
                   trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.teal.shade900,size: 25,),
                   onTap: (){
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => PatientsPage()));
+                    _con.goPatientsPage(context);
                   },
                 ),
               ),
@@ -116,8 +112,7 @@ class _HomePageState extends StateMVC<HomePage> {
                   title: const Text("Trabajos", style: TextStyle(fontSize: 20, color: Colors.white),),
                   trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.teal.shade900,size: 25,),
                   onTap: (){
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => WorksPage()));
+                    _con.goWorkPage(context);
                   },
                 ),
               ),

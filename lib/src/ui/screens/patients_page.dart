@@ -12,9 +12,15 @@ class PatientsPage extends StatefulWidget {
 }
 
 class _PatientsPageState extends StateMVC<PatientsPage> {
+
   late PatientPageController _con;
   _PatientsPageState():super(PatientPageController()){
     _con = PatientPageController();
+  }
+
+  @override
+  init(){
+    _con.initpage();
   }
 
   @override
@@ -100,9 +106,7 @@ class _PatientsPageState extends StateMVC<PatientsPage> {
                             height: 30,
                             width: 90,
                             child: ElevatedButton(
-                                onPressed: (){
-                              Navigator.maybePop(context);
-                            },
+                                onPressed: (){_con.onCancelPopUp(context);},
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.teal,
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
@@ -115,7 +119,7 @@ class _PatientsPageState extends StateMVC<PatientsPage> {
                               setState(() {
                                 _con.patients.remove(patient);
                               });
-                              Navigator.maybePop(context);
+                              _con.deletePatient(context);
                             },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.red,

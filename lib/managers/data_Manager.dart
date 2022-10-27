@@ -4,7 +4,7 @@ import '../src/models/patient_model.dart';
 
 
   class DataManager {
-
+    final IDataAccess dataAccess;
     DataManager._privateConstruct(this.dataAccess);
 
     static final DataManager _instance = DataManager._privateConstruct(Dummy());
@@ -14,8 +14,8 @@ import '../src/models/patient_model.dart';
       return _instance;
 
     }
-    final IDataAccess dataAccess;
-    List<Patient> getPatients(){
+
+    List<Patient>getPatients(){
       return dataAccess.getPatients();
 
     }

@@ -63,7 +63,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               height: 30,
               width: 90,
               child: ElevatedButton(onPressed: (){
-                controller.jumpToPage(2);
+                controller.jumpToPage(4);
               },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal,
