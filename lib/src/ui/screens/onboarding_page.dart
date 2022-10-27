@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sanitater/src/ui/component/build_page.dart';
 import 'package:sanitater/src/ui/screens/home_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Onboarding extends StatefulWidget {
@@ -46,6 +47,8 @@ class _OnboardingState extends State<Onboarding> {
           ),
         child: const Text('Iniciar',style: TextStyle(fontSize: 24),),
       onPressed: () async{
+            final prefs = await SharedPreferences.getInstance();
+            prefs.setBool('ShowHome', true);
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => HomePage()));
       }):
