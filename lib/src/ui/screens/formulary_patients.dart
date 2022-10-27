@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FormularyPatiens extends StatelessWidget {
-  const FormularyPatiens({Key? key}) : super(key: key);
+class FormularyPatients extends StatelessWidget {
+  const FormularyPatients({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,46 +41,22 @@ class FormularyPatiens extends StatelessWidget {
             _formInputAfection(),
             _formInputMedicine(),
             _formInputExtrainfo(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width*0.5,
-                  height: 50,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: ElevatedButton(onPressed: (){
-                      /*setState(() {
-                        _con.patients.remove(patient);
-                      });
-                      _con.deletePatient(context);*/
-                    },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.teal.shade800,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                        child: const Text('Ingresar',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width*0.5,
-                  height: 50,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: ElevatedButton(onPressed: (){
-                      /*setState(() {
-                        _con.patients.remove(patient);
-                      });
-                      _con.deletePatient(context);*/
-                    },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                        child: const Text('Regresar',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
-                  ),
-                ),
-              ],
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 50,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: ElevatedButton(onPressed: (){
+                  /*setState(() {
+                    _con.patients.remove(patient);
+                  });
+                  _con.deletePatient(context);*/
+                },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal.shade800,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    child: const Text('Ingresar',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
+              ),
             ),
           ],
         )

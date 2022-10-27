@@ -30,7 +30,7 @@ class PatientPageController extends ControllerMVC{
 
   goFormularyPatient(context){
     Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const FormularyPatiens()));
+        MaterialPageRoute(builder: (context) => const FormularyPatients()));
   }
 
 }

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       title: "Sanitater",
       debugShowCheckedModeBanner: false,
-      home: FormularyPatiens()/*showHome? const HomePage(): const OnboardingPage(),*/
+      home: showHome? const HomePage(): const OnboardingPage(),
     );
   }
 }
