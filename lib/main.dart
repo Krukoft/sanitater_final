@@ -3,6 +3,8 @@ import 'package:sanitater/src/ui/screens/home_page.dart';
 import 'package:sanitater/src/ui/screens/onboarding_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'src/ui/screens/formulary_patients.dart';
+
 
 // import 'package:mvc_pattern/mvc_pattern.dart';
 
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       title: "Sanitater",
       debugShowCheckedModeBanner: false,
-      home: showHome? const HomePage(): const OnboardingPage(),
+      home: FormularyPatiens()/*showHome? const HomePage(): const OnboardingPage(),*/
     );
   }
 }

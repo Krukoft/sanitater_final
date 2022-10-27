@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:sanitater/src/ui/screens/formulary_patients.dart';
 import '../../../managers/data_Manager.dart';
 import '../../models/patient_model.dart';
 
@@ -25,6 +26,11 @@ class PatientPageController extends ControllerMVC{
 
   deletePatient(context){
     return Navigator.maybePop(context);
+  }
+
+  goFormularyPatient(context){
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const FormularyPatiens()));
   }
 
 }

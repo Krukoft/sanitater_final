@@ -30,7 +30,8 @@ class _PatientsPageState extends StateMVC<PatientsPage> {
         elevation: 5,
         backgroundColor: Colors.teal,
         child: const Icon(Icons.add, size: 35,),
-          onPressed: (){}),
+          onPressed: (){
+          _con.goFormularyPatient(context);}),
       bottomNavigationBar: BottomAppBar(
         color: Colors.teal.shade800,
         child: Container(
