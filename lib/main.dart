@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       title: "Sanitater",
       debugShowCheckedModeBanner: false,
-      home: showHome? const HomePage(): const Onboarding(),
+      home: showHome? const HomePage(): const OnboardingPage(),
     );
   }
 }

@@ -4,14 +4,14 @@ import 'package:sanitater/src/ui/screens/home_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class Onboarding extends StatefulWidget {
-  const Onboarding({Key? key}) : super(key: key);
+class OnboardingPage extends StatefulWidget {
+  const OnboardingPage({Key? key}) : super(key: key);
 
   @override
-  State<Onboarding> createState() => _OnboardingState();
+  State<OnboardingPage> createState() => _OnboardingPageState();
 }
 
-class _OnboardingState extends State<Onboarding> {
+class _OnboardingPageState extends State<OnboardingPage> {
 
   final controller = PageController();
   bool isLastPage = false;

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sanitater/src/ui/screens/laboral_days_page.dart';
 import 'package:sanitater/src/ui/screens/medicines_page.dart';
+import 'package:sanitater/src/ui/screens/onboarding_page.dart';
 import 'package:sanitater/src/ui/screens/options_page.dart';
 import 'package:sanitater/src/ui/screens/patients_page.dart';
 import 'package:sanitater/src/ui/screens/works_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -19,7 +21,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal[800],
-        title: const Text("Agenda", textAlign: TextAlign.center,)
+        title: const Text("Agenda", textAlign: TextAlign.center,),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout_rounded),
+            onPressed: () async{
+              final prefs = await SharedPreferences.getInstance();
+              prefs.setBool('showHome', false);
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => OnboardingPage())
+              );
+            },
+          )
+        ],
       ),
       drawer: Drawer(
         child: Container(
