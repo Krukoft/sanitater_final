@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:sanitater/src/ui/screens/formulary_medicine_page.dart';
 import '../../../managers/data_Manager.dart';
 import '../../models/medicine_model.dart';
+import '../screens/formulary_patients_page.dart';
 
 class MedicinesPageController extends ControllerMVC{
   late List<Medicine> medicines = [];
@@ -22,6 +24,10 @@ class MedicinesPageController extends ControllerMVC{
 
   onCancelPopUp(context){
     return Navigator.maybePop(context);
+  }
+  goFormularyMedicine(context){
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const FormularyMedicinePage()));
   }
 
   deleteMedicine(context){

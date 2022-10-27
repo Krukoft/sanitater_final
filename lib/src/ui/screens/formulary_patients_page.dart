@@ -14,6 +14,8 @@ class _FormularyPatientsPageState extends StateMVC<FormularyPatientsPage> {
   _FormularyPatientsPageState():super(FormularyPatientsPageController()){
     _con = FormularyPatientsPageController();
   }
+
+
   @override
   init(){
     _con.initpage();
@@ -65,10 +67,7 @@ class _FormularyPatientsPageState extends StateMVC<FormularyPatientsPage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: ElevatedButton(onPressed: (){
-                  /*setState(() {
-                    _con.patients.remove(patient);
-                  });
-                  _con.deletePatient(context);*/
+                  _con.addPatient(context);
                 },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal.shade800,

@@ -31,7 +31,9 @@ class _MedicinesPageState extends StateMVC<MedicinesPage> {
             elevation: 5,
             backgroundColor: Colors.teal,
             child: const Icon(Icons.add, size: 35,),
-            onPressed: (){}),
+            onPressed: (){
+              _con.goFormularyMedicine(context);
+            }),
         bottomNavigationBar: BottomAppBar(
           color: Colors.teal.shade800,
           child: Container(
@@ -41,7 +43,7 @@ class _MedicinesPageState extends StateMVC<MedicinesPage> {
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         appBar: AppBar(
           backgroundColor: Colors.teal[800],
-          title: const Text("Pacientes"),
+          title: const Text("Medicinas"),
         ),
         body: ListView.builder(
           itemCount: _con.medicines.length,

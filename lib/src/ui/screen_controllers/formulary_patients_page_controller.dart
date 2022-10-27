@@ -19,4 +19,8 @@ class FormularyPatientsPageController extends ControllerMVC{
 
   void initpage(){}
 
+  addPatient(context){
+    return Navigator.maybePop(context);
+  }
+
 }
