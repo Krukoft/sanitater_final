@@ -81,7 +81,7 @@ class _MedicinesPageState extends StateMVC<MedicinesPage> {
                       width: double.infinity,
                       child: const Padding(
                         padding: EdgeInsets.all(10),
-                        child: Text("Eliminar medicamento",textAlign: TextAlign.center,style: TextStyle(fontSize: 20, color: Colors.white)),
+                        child: Text("Eliminar medicamento",textAlign: TextAlign.center,style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.bold)),
                       ),
                     ),
                     Flexible(
@@ -93,7 +93,7 @@ class _MedicinesPageState extends StateMVC<MedicinesPage> {
                         width: double.infinity,
                         child: Text('Seguro desea eliminar a '+ medicine.name + '?',
                             textAlign: TextAlign.center,
-                            style: const TextStyle(fontSize: 15,)
+                            style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold)
                         ),
                       ),
                     ),
@@ -113,7 +113,7 @@ class _MedicinesPageState extends StateMVC<MedicinesPage> {
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.teal,
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-                                  child: const Text('Cancelar')),
+                                  child: const Text('Cancelar',style: TextStyle(fontWeight: FontWeight.bold),)),
                             ),
                             SizedBox(
                               height: 30,
@@ -127,7 +127,7 @@ class _MedicinesPageState extends StateMVC<MedicinesPage> {
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.red,
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-                                  child: const Text('Borrar')),
+                                  child: const Text('Borrar',style: TextStyle(fontWeight: FontWeight.bold))),
                             ),
                           ],
                         )),
