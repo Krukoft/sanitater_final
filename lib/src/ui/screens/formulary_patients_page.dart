@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
+import '../screen_controllers/formulary_patients_page_controller.dart';
+class FormularyPatientsPage extends StatefulWidget {
+  const FormularyPatientsPage({Key? key}) : super(key: key);
 
-class FormularyPatients extends StatelessWidget {
-  const FormularyPatients({Key? key}) : super(key: key);
+  @override
+  StateMVC<FormularyPatientsPage> createState() => _FormularyPatientsPageState();
+}
+
+class _FormularyPatientsPageState extends StateMVC<FormularyPatientsPage> {
+
+  late FormularyPatientsPageController _con;
+  _FormularyPatientsPageState():super(FormularyPatientsPageController()){
+    _con = FormularyPatientsPageController();
+  }
+  @override
+  init(){
+    _con.initpage();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +102,7 @@ class FormularyPatients extends StatelessWidget {
       ),
     );
   }
+
   _formInputAge(){
     return Container(
       decoration: BoxDecoration(
@@ -104,6 +123,7 @@ class FormularyPatients extends StatelessWidget {
       ),
     );
   }
+
   _formInputAfection(){
     return Container(
       decoration: BoxDecoration(
@@ -124,6 +144,7 @@ class FormularyPatients extends StatelessWidget {
       ),
     );
   }
+
   _formInputMedicine(){
     return Container(
       decoration: BoxDecoration(
@@ -144,6 +165,7 @@ class FormularyPatients extends StatelessWidget {
       ),
     );
   }
+
   _formInputExtrainfo(){
     return Container(
       decoration: BoxDecoration(
@@ -164,10 +186,6 @@ class FormularyPatients extends StatelessWidget {
       ),
     );
   }
-
-
-
-
 }
 
 
