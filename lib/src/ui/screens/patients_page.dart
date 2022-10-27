@@ -1,37 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:sanitater/src/models/afection_model.dart';
-import 'package:sanitater/src/models/medicine_model.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 import '../../models/patient_model.dart';
+import '../screen_controllers/patients_page_controller.dart';
 
 class PatientsPage extends StatefulWidget {
 
   const PatientsPage({Key? key}) : super(key: key);
 
   @override
-  State<PatientsPage> createState() => _PatientsPageState();
+  StateMVC<PatientsPage> createState() => _PatientsPageState();
 }
 
-class _PatientsPageState extends State<PatientsPage> {
-  List<Patient> patientsList = [
-    Patient(id: 2, name: 'ivan martearena', age: 25, afection: Afection(id: 1, name: 'asma') , medicine: Medicine(name: 'respirador', typeMedicine: 'a'),),
-    Patient(id: 2, name: 'Luis Perez', age: 85, afection: Afection(id: 1, name: 'fiebre') , medicine: Medicine(name: 'novalgina', typeMedicine: 'or'),),
-    Patient(id: 2, name: 'juan Arola ', age: 15, afection: Afection(id: 1, name: 'quebradura') , medicine: Medicine(name: 'enyesado', typeMedicine: 'ol'),),
-    Patient(id: 2, name: 'sergio martinez', age: 85, afection: Afection(id: 1, name: 'quemadura') , medicine: Medicine(name: 'curacion de herida', typeMedicine: 'l'),),
-    Patient(id: 2, name: 'sofia lera', age: 35, afection: Afection(id: 1, name: 'resfrio') , medicine: Medicine(name: 'refrianex 500ml', typeMedicine: 'ral'),),
-    Patient(id: 2, name: 'ina hinojosa', age: 67, afection: Afection(id: 1, name: 'covid') , medicine: Medicine(name: 'respirador', typeMedicine: 'o'),),
-    Patient(id: 2, name: 'antonella jauregui', age: 22, afection: Afection(id: 1, name: 'embarazo') , medicine: Medicine(name: 'trabajo de parto', typeMedicine: 'a'),),
-    Patient(id: 2, name: 'narciso martinez', age: 08, afection: Afection(id: 1, name: 'fiebre') , medicine: Medicine(name: 'novalgina', typeMedicine: 'or'),),
-    Patient(id: 2, name: 'facuando anagua ', age: 23, afection: Afection(id: 1, name: 'ulceras') , medicine: Medicine(name: 'limpieza de heridas', typeMedicine: 'ol'),),
-    Patient(id: 2, name: 'estaban eheverria', age: 39, afection: Afection(id: 1, name: 'desgarro') , medicine: Medicine(name: 'esperar diagnostico medico', typeMedicine: 'l'),),
-    Patient(id: 2, name: 'barbara nieto', age: 44, afection: Afection(id: 1, name: 'accidente') , medicine: Medicine(name: 'cuidados intensivos', typeMedicine: 'ral'),),
-    Patient(id: 2, name: 'fabio pegini', age: 53, afection: Afection(id: 1, name: 'dedo amputado') , medicine: Medicine(name: 'sutura de heridas', typeMedicine: 'o'),),
-    Patient(id: 2, name: 'martin ramos', age: 70, afection: Afection(id: 1, name: 'vacunacion') , medicine: Medicine(name: 'inyeccion', typeMedicine: 'a'),),
-    Patient(id: 2, name: 'esteban roman', age: 93, afection: Afection(id: 1, name: 'quebradura') , medicine: Medicine(name: 'enyesado', typeMedicine: 'or'),),
-    Patient(id: 2, name: 'lalo laiza ', age: 28, afection: Afection(id: 1, name: 'desgarro') , medicine: Medicine(name: 'cuidado', typeMedicine: 'ol'),),
-    Patient(id: 2, name: 'estebanverdugo', age: 19, afection: Afection(id: 1, name: 'dolor de cabeza') , medicine: Medicine(name: 'ibupofeno', typeMedicine: 'l'),),
-    Patient(id: 2, name: 'gustavo gonza', age: 11, afection: Afection(id: 1, name: 'convulsiones') , medicine: Medicine(name: 'medicacion', typeMedicine: 'ral'),),
-    Patient(id: 2, name: 'florencia herera', age: 86, afection: Afection(id: 1, name: 'pulmonia') , medicine: Medicine(name: 'respirador', typeMedicine: 'o'),)
-  ];
+class _PatientsPageState extends StateMVC<PatientsPage> {
+  late PatientPageController _con;
+  _PatientsPageState():super(PatientPageController()){
+    _con = PatientPageController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,17 +37,17 @@ class _PatientsPageState extends State<PatientsPage> {
         title: const Text("Pacientes"),
       ),
       body: ListView.builder(
-        itemCount: patientsList.length,
+        itemCount: _con.patients.length,
         itemBuilder: (context, index){
           return ListTile(
             onLongPress: (){
-              _deletePatient(context, patientsList[index]);
+              _deletePatient(context, _con.patients[index]);
             },
-            title: Text(patientsList[index].name+' ' + 'edad:' + ' ' + patientsList[index].age.toString(),),
-            subtitle: Text(patientsList[index].afection.name +'/'+ patientsList[index].medicine.name),
+            title: Text(_con.patients[index].name + ' ' + 'edad:' + ' ' + _con.patients[index].age,),
+            subtitle: Text(_con.patients[index].afection.nameAfection +'/'+ _con.patients[index].medicine.name),
             leading: CircleAvatar(
               backgroundColor: Colors.teal,
-              child: Text(patientsList[index].name.substring(0,1)),
+              child: Text(_con.patients[index].name.substring(0,1)),
             ),
           );
         },
@@ -128,7 +113,7 @@ class _PatientsPageState extends State<PatientsPage> {
                             width: 90,
                             child: ElevatedButton(onPressed: (){
                               setState(() {
-                                patientsList.remove(patient);
+                                _con.patients.remove(patient);
                               });
                               Navigator.maybePop(context);
                             },

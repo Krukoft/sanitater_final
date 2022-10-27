@@ -1,10 +1,10 @@
 class Afection{
-  final int id;
-  final String name;
+  late String id;
+  late String nameAfection;
 
   Afection({
     required this.id,
-    required this.name,
-});
+    required this.nameAfection,
+  });
 
 }

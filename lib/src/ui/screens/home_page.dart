@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:sanitater/src/ui/screens/laboral_days_page.dart';
 import 'package:sanitater/src/ui/screens/medicines_page.dart';
 import 'package:sanitater/src/ui/screens/onboarding_page.dart';
@@ -6,16 +7,27 @@ import 'package:sanitater/src/ui/screens/options_page.dart';
 import 'package:sanitater/src/ui/screens/patients_page.dart';
 import 'package:sanitater/src/ui/screens/works_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../screen_controllers/home_page_controller.dart';
 
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  StateMVC<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends StateMVC<HomePage> {
+  late HomePageController _con;
+  _HomePageState():super(HomePageController()){
+    _con = HomePageController();
+  }
+
+  @override
+  void initState() {
+    _con.initpage();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

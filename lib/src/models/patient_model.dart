@@ -2,9 +2,9 @@ import 'afection_model.dart';
 import 'medicine_model.dart';
 
 class Patient {
-  final int id;
+  final String id;
   final String name;
-  final int age;
+  final String age;
   final Afection afection;
   final Medicine medicine;
 
