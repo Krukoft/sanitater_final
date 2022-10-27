@@ -27,7 +27,8 @@ class PatientPageController extends ControllerMVC{
     return Navigator.maybePop(context);
   }
 
-  /*goLaboralDaysPage(context){
+}
+/*goLaboralDaysPage(context){
     Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => LaboralDaysPage()));
 
@@ -38,5 +39,3 @@ class PatientPageController extends ControllerMVC{
   }
 
   */
-
-}

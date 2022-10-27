@@ -1,5 +1,6 @@
 import 'package:sanitater/interfaces/idata_access.dart';
 import 'package:sanitater/data_access/data_dummy.dart';
+import '../src/models/medicine_model.dart';
 import '../src/models/patient_model.dart';
 
 
@@ -22,5 +23,10 @@ import '../src/models/patient_model.dart';
     void addPatient(Patient patient){
       return dataAccess.addPatient(patient);
     }
+
+    List<Medicine>getMedicines() {
+      return dataAccess.getMedicines();
+    }
+
 
   }

@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:sanitater/src/models/medicine_model.dart';
+
+import '../screen_controllers/medicines_page_controller.dart';
 
 class MedicinesPage extends StatefulWidget {
   const MedicinesPage({Key? key}) : super(key: key);
 
   @override
-  State<MedicinesPage> createState() => _MedicinesPageState();
+  StateMVC<MedicinesPage> createState() => _MedicinesPageState();
 }
 
-class _MedicinesPageState extends State<MedicinesPage> {
-  List<Medicine> medicineList = [
-    Medicine(name: 'ibuprofeno', typeMedicine: 'oral'),
-    Medicine(name: 'novalgina', typeMedicine: 'oral'),
-    Medicine(name: 'aspirineta', typeMedicine: 'oral'),
-    Medicine(name: 'calmante', typeMedicine: 'oral'),
-    Medicine(name: 'lotrial D', typeMedicine: 'oral'),
+class _MedicinesPageState extends StateMVC<MedicinesPage> {
 
-  ];
+  late MedicinesPageController _con;
+  _MedicinesPageState():super(MedicinesPageController()){
+    _con = MedicinesPageController();
+  }
+
+  @override
+  init(){
+    _con.initpage();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,17 +44,17 @@ class _MedicinesPageState extends State<MedicinesPage> {
           title: const Text("Pacientes"),
         ),
         body: ListView.builder(
-          itemCount: medicineList.length,
+          itemCount: _con.medicines.length,
           itemBuilder: (context, index){
             return ListTile(
               onLongPress: (){
-                _deletePatient(context, medicineList[index]);
+                _deleteMedicine(context, _con.medicines[index]);
               },
-              title: Text(medicineList[index].name),
-              subtitle: Text(medicineList[index].typeMedicine),
+              title: Text(_con.medicines[index].name),
+              subtitle: Text(_con.medicines[index].typeMedicine + '/Stock acual '+_con.medicines[index].stockMedicine.toString()),
               leading: CircleAvatar(
                 backgroundColor: Colors.teal,
-                child: Text(medicineList[index].name.substring(0,1)),
+                child: Text(_con.medicines[index].name.substring(0,1)),
               ),
             );
           },
@@ -55,7 +62,7 @@ class _MedicinesPageState extends State<MedicinesPage> {
     );
   }
 
-  _deletePatient(context,Medicine medicine){
+  _deleteMedicine(context,Medicine medicine){
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
@@ -101,7 +108,7 @@ class _MedicinesPageState extends State<MedicinesPage> {
                               width: 90,
                               child: ElevatedButton(
                                   onPressed: (){
-                                    Navigator.maybePop(context);
+                                    _con.onCancelPopUp(context);
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.teal,
@@ -113,9 +120,9 @@ class _MedicinesPageState extends State<MedicinesPage> {
                               width: 90,
                               child: ElevatedButton(onPressed: (){
                                 setState(() {
-                                  medicineList.remove(medicine);
+                                  _con.medicines.remove(medicine);
                                 });
-                                Navigator.maybePop(context);
+                                _con.deleteMedicine(context);
                               },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.red,

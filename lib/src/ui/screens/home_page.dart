@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:sanitater/src/ui/screens/laboral_days_page.dart';
-import 'package:sanitater/src/ui/screens/medicines_page.dart';
-import 'package:sanitater/src/ui/screens/onboarding_page.dart';
-import 'package:sanitater/src/ui/screens/options_page.dart';
-import 'package:sanitater/src/ui/screens/patients_page.dart';
-import 'package:sanitater/src/ui/screens/works_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../screen_controllers/home_page_controller.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -75,7 +68,7 @@ class _HomePageState extends StateMVC<HomePage> {
                 color: Colors.teal,
                 child: ListTile (
                   leading: Icon(Icons.access_time_filled, color: Colors.teal.shade900,size: 30,),
-                  title: Text("Dias Laborales", style: TextStyle(fontSize: 20, color: Colors.white),),
+                  title: const Text("Dias Laborales", style: TextStyle(fontSize: 20, color: Colors.white),),
                   trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.teal.shade900,size: 25,),
                   onTap: (){
                     _con.goLaboralDayPage(context);
@@ -129,8 +122,7 @@ class _HomePageState extends StateMVC<HomePage> {
                   title: const Text("Medicinas", style: TextStyle(fontSize: 20, color: Colors.white),),
                   trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.teal.shade900,size: 25,),
                   onTap: (){
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => MedicinesPage()));
+                    _con.goMedicinesPage(context);
                   },
                 ),
               ),
@@ -147,8 +139,7 @@ class _HomePageState extends StateMVC<HomePage> {
                   title: const Text("Opciones", style: TextStyle(fontSize: 20, color: Colors.white),),
                   trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.teal.shade900,size: 25,),
                   onTap: (){
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => OptionsPage()));
+                    _con.goOptionsPage(context);
                   },
                 ),
               ),
